@@ -29,7 +29,8 @@ public class Employee {
     
 
     public void setFirstName(String firstName) {
-        if(firstName.trim().length() < firstName.length() && firstName == null){
+        if(!"".equals(firstName) && 
+                firstName.trim().length() < firstName.length() && null == firstName){
             System.out.println("Please only enter a one word name");
         } 
         this.firstName = firstName;

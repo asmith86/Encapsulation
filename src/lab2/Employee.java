@@ -31,14 +31,16 @@ public class Employee {
     private Date orientationDate;
 
     public Employee(String firstName, String lastName, String ssn) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.ssn = ssn;
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        this.setSsn(ssn);
     }
 
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.
-    public void meetWithHrForBenefitAndSalryInfo() {
+    
+    
+    private void meetWithHrForBenefitAndSalryInfo() {
         metWithHr = true;
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         String fmtDate = sdf.format(orientationDate);        
@@ -46,10 +48,10 @@ public class Employee {
             + fmtDate);
     }
 
-    // Assume this must be performed first, and assume that an employee
+    // Assume this must be performed second, and assume that an employee
     // would only do this once, upon being hired.:
-    public void meetDepartmentStaff() {
-        metDeptStaff = true;
+    private void meetDepartmentStaff() {
+        this.setMetDeptStaff(true);
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         String fmtDate = sdf.format(orientationDate);        
         System.out.println(firstName + " " + lastName + " met with Dept. Staff on "
@@ -71,8 +73,8 @@ public class Employee {
     // sometimes change office locations that this method may need to be called 
     // independently from other classes.
     public void moveIntoCubicle(String cubeId) {
-        this.cubeId = cubeId;
-        this.movedIn = true;
+        this.setCubeId(cubeId);
+        this.setMovedIn(true);
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         String fmtDate = sdf.format(orientationDate);        
         System.out.println(firstName + " " + lastName + " moved into cubicle "
@@ -86,7 +88,12 @@ public class Employee {
     // setter methods give the developer the power to control what data is
     // allowed through validation.
     
-    public void setFirstName(String firstName) {
+    private String validateName(String name){
+        //put validation code for your names
+        return name;
+    }
+    public final void setFirstName(String firstName){
+       this.validateName(firstName);
        this.firstName = firstName;
     }
 
@@ -94,15 +101,17 @@ public class Employee {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-       this.lastName = lastName;
+    public final void setLastName(String lastName) {
+        this.validateName(lastName);
+        this.lastName = lastName;
     }
 
     public String getSsn() {
         return ssn;
     }
 
-    public void setSsn(String ssn) {
+    public final void setSsn(String ssn) {
+        // validation code here.
         this.ssn = ssn;
     }
 
@@ -110,10 +119,10 @@ public class Employee {
         return metWithHr;
     }
 
-    // boolean parameters need no validation
-    public void setMetWithHr(boolean metWithHr) {
-        this.metWithHr = metWithHr;
-    }
+//   This method seems to be unused.
+//    private void setMetWithHr(boolean metWithHr) {
+//        this.metWithHr = metWithHr;
+//    }
 
     public boolean isMetDeptStaff() {
         return metDeptStaff;
@@ -127,7 +136,7 @@ public class Employee {
         return reviewedDeptPolicies;
     }
 
-    public void setReviewedDeptPolicies(boolean reviewedDeptPolicies) {
+    private void setReviewedDeptPolicies(boolean reviewedDeptPolicies) {
         this.reviewedDeptPolicies = reviewedDeptPolicies;
     }
 
@@ -135,7 +144,7 @@ public class Employee {
         return movedIn;
     }
 
-    public void setMovedIn(boolean movedIn) {
+    private void setMovedIn(boolean movedIn) {
         this.movedIn = movedIn;
     }
 
@@ -145,6 +154,7 @@ public class Employee {
 
     
     public void setCubeId(String cubeId) {
+        // Validation logic
         this.cubeId = cubeId;
     }
 
@@ -153,5 +163,13 @@ public class Employee {
     }
 
     public void setOrientationDate(Date orientationDate) {
+        // Validation logic.
         this.orientationDate = orientationDate;
-    }}
+    }
+    
+    private String returnFmtDateString(Date orientationDate){
+        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
+        String fmtDate = sdf.format(orientationDate);
+        return fmtDate;
+    }
+}
