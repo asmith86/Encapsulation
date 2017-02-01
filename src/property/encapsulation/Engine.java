@@ -22,46 +22,22 @@ public class Engine {
     private int cylinderCount;
     private boolean running;
 
-    // Is using the default constructor always a good idea?
-    // What happens if setCylinderCount() is never called?
-    public Engine(int cylinders) {
-        setCylinderCount(cylinders);
-    }
-
-    // We are providing read-only access to this property. this is a 
-    // requirements issue.
     public int getCylinderCount() {
         return cylinderCount;
     }
 
-    // by making this private you cannot change the cyclinder count once
-    // the engine is created. This is a requirements issue.
-    private void setCylinderCount(int value) {
-        if(value < 1 || value > 12) {
-            throw new IllegalArgumentException("Illegal cylinder count");
-        }
-        cylinderCount = value;
+    public void setCylinderCount(int cylinderCount) {
+        this.cylinderCount = cylinderCount;
     }
 
-    public void start() {
-        if(!running) {
-            running = true;
-        }
-    }
-
-    public void stop() {
-        if(running) {
-            running = false;
-        }
-    }
-
-    // This is a getter method for the running property. By convention
-    // boolean properties have getter methods that start with "is".
-    // Notice there is no setter method - why? Because we want to control
-    // how the property is mutated by only using the start() method.
     public boolean isRunning() {
         return running;
     }
 
+    public void setRunning(boolean running) {
+        this.running = running;
+    }
+
+  
  
 }
