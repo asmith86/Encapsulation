@@ -2,11 +2,9 @@
 package lab4;
 
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class HrDept {
-    private ArrayList employees;
     private Employee[] emps;
     private int empCount;
 
