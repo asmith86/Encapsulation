@@ -36,6 +36,13 @@ public class Employee {
         this.setSsn(ssn);
     }
 
+    
+    public void hireEmployee(){
+        this.meetWithHrForBenefitAndSalryInfo();
+        this.meetDepartmentStaff();
+        this.reviewDeptPolicies();
+        this.moveIntoCubicle(cubeId);
+    }
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.
     
@@ -119,10 +126,10 @@ public class Employee {
         return metWithHr;
     }
 
-//   This method seems to be unused.
-//    private void setMetWithHr(boolean metWithHr) {
-//        this.metWithHr = metWithHr;
-//    }
+  
+    private void setMetWithHr(boolean metWithHr) {
+        this.metWithHr = metWithHr;
+    }
 
     public boolean isMetDeptStaff() {
         return metDeptStaff;
@@ -167,9 +174,9 @@ public class Employee {
         this.orientationDate = orientationDate;
     }
     
-    private String returnFmtDateString(Date orientationDate){
+    private String returnFmtDateString(Date date){
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);
+        String fmtDate = sdf.format(date);
         return fmtDate;
     }
 }
