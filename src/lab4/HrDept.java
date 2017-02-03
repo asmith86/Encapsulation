@@ -8,6 +8,10 @@ public class HrDept {
     private  Employee[] emps;
     private int empCount;
 
+    public int getEmpCount() {
+        return empCount;
+    }
+
     public HrDept(int empNo) {
         this.emps = new Employee[empNo];
         this.empCount = 0;
@@ -54,7 +58,9 @@ public class HrDept {
         return emps;
     }
 
-    
+    public void returnEmployee(){
+        
+    }
     
 
     

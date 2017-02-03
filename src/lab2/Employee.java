@@ -49,8 +49,7 @@ public class Employee {
     
     private void meetWithHrForBenefitAndSalryInfo() {
         metWithHr = true;
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
+        String fmtDate = this.returnFmtDateString(orientationDate);       
         System.out.println(firstName + " " + lastName + " met with Hr on "
             + fmtDate);
     }
@@ -59,8 +58,7 @@ public class Employee {
     // would only do this once, upon being hired.:
     private void meetDepartmentStaff() {
         this.setMetDeptStaff(true);
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
+        String fmtDate = this.returnFmtDateString(orientationDate);       
         System.out.println(firstName + " " + lastName + " met with Dept. Staff on "
             + fmtDate);
     }
@@ -69,9 +67,8 @@ public class Employee {
     // policies may change that this method may need to be called 
     // independently from other classes.
     public void reviewDeptPolicies() {
-        reviewedDeptPolicies = true;
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
+        reviewedDeptPolicies = true; 
+        String fmtDate = this.returnFmtDateString(orientationDate);       
         System.out.println(firstName + " " + lastName + " reviewed Dept policies on "
             + fmtDate);
     }
@@ -82,8 +79,7 @@ public class Employee {
     public void moveIntoCubicle(String cubeId) {
         this.setCubeId(cubeId);
         this.setMovedIn(true);
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
+        String fmtDate = this.returnFmtDateString(orientationDate);
         System.out.println(firstName + " " + lastName + " moved into cubicle "
                 + cubeId + " on " + fmtDate);
     }
@@ -96,7 +92,9 @@ public class Employee {
     // allowed through validation.
     
     private String validateName(String name){
-        //put validation code for your names
+        if(null == name || name.length() == 0){
+            throw new IllegalArgumentException();
+        }
         return name;
     }
     public final void setFirstName(String firstName){
