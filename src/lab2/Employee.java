@@ -37,7 +37,7 @@ public class Employee {
     }
 
     
-    public void hireEmployee(){
+    public void hireEmployee(String cubeId){
         this.meetWithHrForBenefitAndSalryInfo();
         this.meetDepartmentStaff();
         this.reviewDeptPolicies();
@@ -77,11 +77,16 @@ public class Employee {
     // sometimes change office locations that this method may need to be called 
     // independently from other classes.
     public void moveIntoCubicle(String cubeId) {
-        this.setCubeId(cubeId);
-        this.setMovedIn(true);
-        String fmtDate = this.returnFmtDateString(orientationDate);
-        System.out.println(firstName + " " + lastName + " moved into cubicle "
-                + cubeId + " on " + fmtDate);
+        if (cubeId == null || cubeId.isEmpty()) {
+            throw new IllegalArgumentException();
+        } else {
+            this.setCubeId(cubeId);
+            this.setMovedIn(true);
+            String fmtDate = this.returnFmtDateString(orientationDate);
+            System.out.println(firstName + " " + lastName + " moved into cubicle "
+                    + cubeId + " on " + fmtDate);
+        }
+
     }
 
     public String getFirstName() {
@@ -151,6 +156,9 @@ public class Employee {
 
     private void setMovedIn(boolean movedIn) {
         this.movedIn = movedIn;
+        if(!movedIn){
+            cubeId = "";
+        }
     }
 
     public String getCubeId() {
