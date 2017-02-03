@@ -5,10 +5,11 @@ package lab4;
 
 
 public class HrDept {
-    private Employee[] emps;
+    private  Employee[] emps;
     private int empCount;
 
-    public HrDept() {
+    public HrDept(int empNo) {
+        this.emps = new Employee[empNo];
         this.empCount = 0;
     }
     
