@@ -1,69 +1,42 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package lab4;
 
-
-
-
+/**
+ *
+ * @author Alex
+ */
 public class HrDept {
-    private  Employee[] emps;
-    private int empCount;
-
-    public int getEmpCount() {
-        return empCount;
-    }
-
-    public HrDept(int empNo) {
-        this.emps = new Employee[empNo];
-        this.empCount = 0;
+    private EmployeeDatabase roster;
+    
+    public HrDept(){
+        this.roster = new EmployeeDatabase();
     }
     
-    public void hireEmployee(String firstName, String lastName, String ssn) {
-        Employee e = new Employee(firstName,lastName,ssn);
-        e.setFirstName(firstName);
-        e.setLastName(lastName);
-        e.setSsn(ssn);
-        this.emps[empCount] = e;
-        this.orientEmployee(e, "B204");
-        this.empCount += 1;
+    public void hire(String firstName, String lastName, String ssn){
+        Employee e = new Employee(firstName, lastName, ssn);
+        roster.addEmployee(e);
+        
     }
-   
-    public void orientEmployee(Employee emp, String cubeId) {
-        emp.doFirstTimeOrientation(cubeId);
+    
+    public void orientEmployee(Employee e, String cubeId){
+        e.doFirstTimeOrientation(cubeId);
+        
     }
-
-    public void outputReport(String ssn) {
-        Employee e = null;
+    
+    public void getEmployeeStatus(String ssn){
+        Employee e = this.roster.findEmployee(ssn);
+        boolean emptest = (e.isMetWithHr() && e.isMetDeptStaff() && e.isMovedIn());
         
-        for(int i = 0; i < emps.length; i++){
-            if (this.emps[i].getSsn().equals(ssn)){
-                e = this.emps[i];
-                break;
-            } else {
-                return;
-            }
-        }
-        
-        
-
-       
-        if(e.isMetWithHr() && e.isMetDeptStaff()
-           && e.isReviewedDeptPolicies() && e.isMovedIn()) {
-            
+        if(null == e){
+            throw new NullPointerException("Employee cannot be null");
+        } else if(!emptest){
+          e.getReportService().alert("Employee is not ready for hire");
+        } else {
             e.getReportService().outputReport();
-            
         }
     }
-
-    public Employee[] getEmps() {
-        return emps;
-    }
-
-    public void returnEmployee(){
-        
-    }
-    
-
-    
-    
-
 }

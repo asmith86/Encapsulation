@@ -25,5 +25,9 @@ public class EmployeeReportService {
     public void clearReport() {
         report = "";
     }
+    
+    public void alert(String msg){
+        System.out.println(msg);
+    }
 
 }

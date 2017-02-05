@@ -16,12 +16,7 @@ public class Startup {
 //        c.hireNewEmp("John", "Doe", "888-88-8888");
 //        c.hireNewEmp("Who", "Ever", "222-22-2222");
        
-        HrDept hr = new HrDept(10);
-        System.out.println(hr.getEmpCount());
-        hr.hireEmployee("first", "last", "222-22-2222");
-        System.out.println(hr.getEmpCount());
-        hr.hireEmployee("hello", "world", "333-33-3333");
-        System.out.println(hr.getEmpCount());
+      
         
         
     }
