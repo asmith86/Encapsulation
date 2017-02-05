@@ -21,19 +21,27 @@ public class Employee {
     private boolean movedIn;
     private String cubeId;
     private Date orientationDate;
+    
+    public Employee(String firstName, String lastName, String ssn){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.ssn = ssn;
+    }
 
     public String getFirstName() {
         return firstName;
     }
     
     
-
+    
+    
     public void setFirstName(String firstName) {
-        if(!"".equals(firstName) && 
-                firstName.trim().length() < firstName.length() && null == firstName){
-            System.out.println("Please only enter a one word name");
-        } 
-        this.firstName = firstName;
+        if(firstName.isEmpty() || null == firstName){
+            System.out.println("Invalid Input");
+        } else {
+            this.firstName = firstName;
+        }
+       
     }
 
     public String getLastName() {
@@ -41,7 +49,11 @@ public class Employee {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        if(firstName.isEmpty() || null == firstName){
+            System.out.println("Invalid Input");
+        } else {
+            this.lastName = lastName;
+        }
     }
 
     public String getSsn() {
@@ -49,7 +61,7 @@ public class Employee {
     }
 
     public void setSsn(String ssn){
-        if(ssn.length() != 9 && ssn != null){
+        if(ssn.length() != 9 || ssn == null){
             System.out.println("invalid ssn");
         } else {
            this.ssn = ssn; 
@@ -95,8 +107,12 @@ public class Employee {
     }
 
     public void setCubeId(String cubeId) {
-        //validation logic
-        this.cubeId = cubeId;
+        if(null == cubeId || cubeId.isEmpty()){
+            System.out.println("Invalid Cube Id");
+        } else {
+            this.cubeId = cubeId;
+        }
+        
     }
 
     public Date getOrientationDate() {
@@ -104,8 +120,12 @@ public class Employee {
     }
 
     public void setOrientationDate(Date orientationDate) {
-        //validation logic
-        this.orientationDate = orientationDate;
+        if(null == orientationDate){
+            System.out.println("Invalid date");
+        } else {
+            this.orientationDate = orientationDate;
+        }
+        
     }
 
 
