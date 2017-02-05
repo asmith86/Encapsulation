@@ -16,9 +16,10 @@ public class HrDept {
         this.roster = new EmployeeDatabase();
     }
     
-    public void hire(String firstName, String lastName, String ssn){
+    public void hire(String firstName, String lastName, String ssn, String cubeId){
         Employee e = new Employee(firstName, lastName, ssn);
         roster.addEmployee(e);
+        this.orientEmployee(e, cubeId);
         
     }
     

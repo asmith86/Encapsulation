@@ -13,11 +13,12 @@ public class Company {
     private HrDept hr;
     
     public Company(){
-        
+        hr = new HrDept();
     }
     
-    public void hireNewEmp(String firstName, String lastName, String ssn){
-        
+    public void hireNewEmp(String firstName, String lastName, String ssn, String cubeId){
+        hr.hire(firstName, lastName, ssn, cubeId);
+        hr.getEmployeeStatus(ssn);
     }
 
     public HrDept getHr() {

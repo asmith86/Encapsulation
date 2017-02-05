@@ -12,9 +12,11 @@ package lab4;
 public class Startup {
     public static void main(String[] args) {
 
-//        Company c = new Company();
-//        c.hireNewEmp("John", "Doe", "888-88-8888");
-//        c.hireNewEmp("Who", "Ever", "222-22-2222");
+        Company c = new Company();
+        
+        c.hireNewEmp("John", "Doe", "888-88-8888", "E015");
+        
+        c.hireNewEmp("Who", "Ever", "222-22-2222", "A101");
        
       
         
